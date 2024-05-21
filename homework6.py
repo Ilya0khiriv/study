@@ -17,7 +17,7 @@ my_dict = {
     "ring": "звонить"
 }
 
-
+njk
 print(my_dict)
 print(f"Ring - {my_dict['ring']}")
 my_dict['ring'] = 'кольцо'
