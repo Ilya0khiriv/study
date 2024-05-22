@@ -1,7 +1,14 @@
 
 
 
-def calculate(num):
+def calculate(num = None):
+
+    if num is None:
+        num = int(input("Enter a Number, Great Adventurer: "))
+
+    if not 3 <= num <= 20:
+        return "Death", num
+
     answer = []
     probable_numbers = []
     for i in range(num):
@@ -12,6 +19,7 @@ def calculate(num):
     return "".join(answer), num
 
 
-print(f"Possible codes for number {calculate(20)[1]} are:", calculate(20)[0])
+result = calculate() # You can either put in a parameter yourself or enter it in the terminal
+print(f"Possible codes for number {result[1]}:", result[0])
 
 
