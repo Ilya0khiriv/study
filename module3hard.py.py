@@ -16,16 +16,13 @@ def calculate_structure_sum(data, recursive = False):
         for key in val:
             calculate_structure_sum(key, recursive = True)
             calculate_structure_sum(val[key], recursive = True)
-    def tuple_(val):
-        for i in val:
-            calculate_structure_sum(i, recursive = True)
 
     if type(data) is int: collect_numbers.append(data)
     elif type(data) is str: collect_numbers.append(len(data))
+
     elif type(data) is list: list_(data)
     elif type(data) is dict: dict_(data)
-    elif type(data) is tuple: tuple_(data)
-    elif type(data) is set: list_(list(data))
+    elif type(data) is tuple or set: list_(list(data))
 
     if recursive is False:
         print(f"Collected numbers are {collect_numbers}, Sum is {sum(collect_numbers)}")
