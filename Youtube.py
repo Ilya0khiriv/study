@@ -1,18 +1,18 @@
 import time
 
+
 class Video:
 
-    def __init__(self, title, duration, time_now = 0, adult_mode = False):
+    def __init__(self, title, duration, time_now=0, adult_mode=False):
         self.title = title
         self.duration = duration
         self.time_now = time_now
         self.adult_mode = adult_mode
 
-    pass
 
 class UrTube:
 
-    def __init__(self,):
+    def __init__(self, ):
         self.users = {}
         self.videos = {}
         self.current_user = ""
@@ -56,16 +56,12 @@ class UrTube:
             print("Видео не существует")
             return
 
-
         timer = 0
         for i in range(self.videos[video][0]):
             timer += 1
-            print(timer, end = " ")
+            print(timer, end=" ")
             time.sleep(1)
         print("Конец видео")
-
-
-
 
 
 if __name__ == "__main__":
