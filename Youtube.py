@@ -1,5 +1,10 @@
 import time
 
+class User:
+    def __init__(self, nickname, password, age):
+        self.nickname = nickname
+        self.password = password
+        self.age = age
 
 class Video:
 
@@ -22,8 +27,12 @@ class UrTube:
         self.current_user = login
 
     def register(self, nickname, password, age):
+
+
+
         if nickname in self.users.keys():
             print(f"Пользователь {nickname} уже существует")
+            return
 
         self.users.update({nickname: [hash(password), age]})
         self.log_in(nickname)
