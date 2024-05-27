@@ -1,10 +1,12 @@
 import time
 
+
 class User:
     def __init__(self, nickname, password, age):
         self.nickname = nickname
         self.password = password
         self.age = age
+
 
 class Video:
 
@@ -18,59 +20,78 @@ class Video:
 class UrTube:
 
     def __init__(self, ):
-        self.users = {}
-        self.videos = {}
+        self.users = []
+        self.videos = []
         self.current_user = ""
 
-    def log_in(self, login):
-        self.current_user = ""
-        self.current_user = login
+    def log_in(self, nickname, password):
+
+        for user in self.users:
+            if nickname in user.nickname:
+                if password == user.password:
+                    self.current_user = {}
+                    self.current_user = nickname
+                    return
+        print("Incorrect credentials")
 
     def register(self, nickname, password, age):
 
+        for user in self.users:
+            if nickname in user.nickname:
+                print(f"Пользователь {nickname} уже существует")
+                return
 
+        password = hash(password)
 
-        if nickname in self.users.keys():
-            print(f"Пользователь {nickname} уже существует")
-            return
-
-        self.users.update({nickname: [hash(password), age]})
-        self.log_in(nickname)
+        self.users.append(User(nickname, password, age))
+        self.log_in(nickname, password)
 
     def log_out(self):
         self.current_user = ""
 
-    def add(self, *video):
-        for i in video:
-            self.videos.update({i.title: [i.duration, i.time_now, i.adult_mode]})
+    def add(self, *videos):
+        for video in videos:
+            self.videos.append(video)
 
     def get_videos(self, search_term):
         results = []
-        for i in self.videos.keys():
-            if search_term.lower() in i.lower():
-                results.append(i)
+        for video in self.videos:
+            if search_term.lower() in video.title.lower():
+                results.append(video.title)
         return results
 
     def watch_video(self, video):
+
+
+
+        def play(saved_video):
+            return
+            timer = 0
+            for i in range(saved_video):
+                timer += 1
+                print(timer, end=" ")
+                time.sleep(1)
+            print("Конец видео")
 
         if self.current_user == "":
             print("Войдите в аккаунт чтобы смотреть видео")
             return
 
-        elif self.users[self.current_user][1] < 18:
+        age = 0
+        for user in self.users:
+            if self.current_user == user.nickname:
+                age = user.age
+
+        if age < 18:
             print("Вам нет 18 лет, пожалуйста покиньте страницу")
             return
 
-        if video not in self.videos.keys():
-            print("Видео не существует")
-            return
+        for saved_video in self.videos:
+            if video in saved_video.title:
+                play(saved_video.duration)
+                return
 
-        timer = 0
-        for i in range(self.videos[video][0]):
-            timer += 1
-            print(timer, end=" ")
-            time.sleep(1)
-        print("Конец видео")
+        print("Видео не найдено")
 
 
 if __name__ == "__main__":
