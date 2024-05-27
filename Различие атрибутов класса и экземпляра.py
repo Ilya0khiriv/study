@@ -1,8 +1,13 @@
 class Building:
     total = 0
     def __init__(self):
-        self.total = Building.total
         Building.total += 1
+        self.total = Building.total
 
+
+list = []
 for i in range(40):
-    print(Building().total)
+    list.append(Building())
+
+print(list)
+print(list[0].total)
