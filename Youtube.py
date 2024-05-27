@@ -28,7 +28,7 @@ class UrTube:
 
         for user in self.users:
             if nickname in user.nickname:
-                if password == user.password:
+                if hash(password) == user.password:
                     self.current_user = {}
                     self.current_user = nickname
                     return
@@ -41,9 +41,7 @@ class UrTube:
                 print(f"Пользователь {nickname} уже существует")
                 return
 
-        password = hash(password)
-
-        self.users.append(User(nickname, password, age))
+        self.users.append(User(nickname, hash(password), age))
         self.log_in(nickname, password)
 
     def log_out(self):
@@ -62,10 +60,7 @@ class UrTube:
 
     def watch_video(self, video):
 
-
-
         def play(saved_video):
-            return
             timer = 0
             for i in range(saved_video):
                 timer += 1
