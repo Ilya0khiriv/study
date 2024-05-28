@@ -2,7 +2,7 @@ class Vehicle:
     def __init__(self, *args):
         self.vehicle_type = "none"
 
-class Car():
+class Car:
     def __init__(self, *args):
         self.price = 1000000
 
