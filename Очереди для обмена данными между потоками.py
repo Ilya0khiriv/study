@@ -1,30 +1,15 @@
-import queue
 import threading
 import time
-import queue as q
-from concurrent.futures import thread
-from random import random, randint
-
 
 class Table():
     def __init__(self, number, is_busy=False):
         self.number = number
         self.is_busy = is_busy
 
-
 class Cafe():
     def __init__(self, tables):
         self.queue = [Customer(i) for i in range(1, 21)]
         self.tables = tables
-
-        self.waiting_line = []
-        self.next_one = None
-        self.halt = False
-
-        from queue import Queue
-
-        max_size = 3
-        self.limited_queue = Queue(maxsize=max_size)
 
     def next_table(self):
         for table in self.tables:
