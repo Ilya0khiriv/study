@@ -6,7 +6,7 @@ class MySortTest(unittest.TestCase):
 
     def setUp(self):
         self.st = Student(name="Kevin")
-   #5
+   #5   ###
     def test_walk(self):
         for i in range(10): self.st.walk()
         self.assertEqual(self.st.distance, 500, f"Дистанции не равны {self.st.distance} != 500")
