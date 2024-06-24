@@ -1,13 +1,14 @@
+def single_root_words(root_word, *other_words):
+    same_words = []
+    for i in other_words:
 
 
-def test():
-    a = "lol"
-    b = "rofl"
-    print(a, b)
+        if (i.lower() in root_word.lower()) or (root_word.lower() in i.lower()) and i.lower() != root_word.lower():
+            same_words.append(i)
 
-def test2(a, b, c):
-    print(a, b, c)
+    return same_words
 
-test()
-test2("one", "two", "three")
-
+result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
+print(result1)
+print(result2)
