@@ -1,4 +1,18 @@
-import module_1
+from fake_math import devide as fake_divide
+from true_math import devide as true_divide
 
-module_1.func()
-module_1.func_2()
+result1 = fake_divide(69, 3)
+result2 = fake_divide(3, 0)
+result3 = true_divide(49, 7)
+result4 = true_divide(15, 0)
+print(result1)
+print(result2)
+print(result3)
+print(result4)
+
+
+# old hw
+# import module_1
+
+# module_1.func()
+# module_1.func_2()
