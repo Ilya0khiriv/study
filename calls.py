@@ -21,7 +21,6 @@ def contains(string, list_to_search):  #is_contians не верно
     else:
         return False
 
-
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
 print(contains('Urban', ['ban', 'BaNaN', 'urBAN']))  # Urban ~ urBan
