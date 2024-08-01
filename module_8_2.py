@@ -27,15 +27,14 @@ def calculate_average(numbers):
             average = 0
         return average
 
-    def resolve_data_type(numbers):
-        if isinstance(numbers, str):
-            numbers = tuple(numbers)
 
-        if isinstance(numbers, (list, tuple, set)):
-            total, garbage = personal_sum(numbers)
-            return total, garbage, len(numbers)
+    if isinstance(numbers, str):
+        numbers = tuple(numbers)
 
-    return actual_calculation(resolve_data_type(numbers))
+    if isinstance(numbers, (list, tuple, set)):
+        total, garbage = personal_sum(numbers)
+        return actual_calculation((total, garbage, len(numbers)))
+
 
 
 print(f'Результат 1: {calculate_average("1, 2, 3")}')  # Строка перебирается, но каждый символ - строковый тип
