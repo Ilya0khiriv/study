@@ -1,20 +1,14 @@
 import unittest
 from unittest.runner import TextTestRunner
 
-# Импортируем классы RunnerTest и TournamentTest из предыдущих задач
 from tests_12_2 import RunnerTest, TournamentTest
 
-# Создаем объект TestSuite
 suite = unittest.TestSuite()
 
-# Добавляем тесты из RunnerTest
 suite.addTest(unittest.makeSuite(RunnerTest))
 
-# Добавляем тесты из TournamentTest
 suite.addTest(unittest.makeSuite(TournamentTest))
 
-# Создаем объект TextTestRunner с аргументом verbosity=2
 runner = TextTestRunner(verbosity=2)
 
-# Запускаем тесты
 runner.run(suite)
