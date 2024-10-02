@@ -4,7 +4,7 @@ async def start_strongman(name, power):
     print(f'Силач {name} начал соревнования.')
 
     tries = 5
-    inverse_power = 6 - power
+    inverse_power = 1 / power
 
     for i in range(1, tries+1):
         await asyncio.sleep(inverse_power)
