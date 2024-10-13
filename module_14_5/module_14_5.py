@@ -6,7 +6,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 import crud_functions as cf
 cf.initiate_db()
-cf.create_items_for_db()
+
 
 class UserState(StatesGroup):
     age = State()
@@ -184,3 +184,7 @@ async def any_msg(message):
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
+ # username = State()
+ #    email = State()
+ #    age = State()
+ #    balance = State()
