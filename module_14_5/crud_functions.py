@@ -29,6 +29,7 @@ def initiate_db():
         """)
 
     connection.commit()
+    create_items_for_db()
 
 def is_included(username):
     cex("SELECT username FROM Users")
@@ -48,10 +49,14 @@ def get_all_products():
     return cursor.fetchall()
 
 def create_items_for_db():
-    for i in range(1,5):
-        with open(os.path.join("images", f"img_{i}.png"), "rb") as file:
-            cex("INSERT INTO Products (title, description, price, img) VALUES(?, ?, ?, ?)", (f'Product {i}', f'lalala{i}', i * 100, file.read()))
-            connection.commit()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", ("Products",))
+    if cursor.fetchone() is None:
+
+
+        for i in range(1,5):
+            with open(os.path.join("images", f"img_{i}.png"), "rb") as file:
+                cex("INSERT INTO Products (title, description, price, img) VALUES(?, ?, ?, ?)", (f'Product {i}', f'lalala{i}', i * 100, file.read()))
+                connection.commit()
 
 initiate_db()
 
