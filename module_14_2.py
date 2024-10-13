@@ -24,9 +24,6 @@ for i in range(1, 11):
     if i % 2 != 0:
         cex("UPDATE Users SET balance = ? WHERE username = ?", (500, f"User{i}"))
 
-for i in range(1, 11):
-    if i % 2 != 0:
-        cex("UPDATE Users SET balance = ? WHERE username = ?", (500, f"User{i}"))
 
 _store = 2
 for i in range(1, 11):
