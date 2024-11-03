@@ -16,11 +16,11 @@ class User(BaseModel):
     age: valid_id
 
 @app.get("/users")
-async def get_message() -> List[User]:
+async def get_user() -> List[User]:
     return users
 
 @app.post('/user/{username}/{age}')
-async def create_message (username: valid_username, age: valid_age) -> str:
+async def create_user(username: valid_username, age: valid_age) -> str:
     try:
         id = users[-1].id + 1
     except:
@@ -28,27 +28,25 @@ async def create_message (username: valid_username, age: valid_age) -> str:
 
     user = User(id=id, username=username, age=age)
     users.append(user)
-    return f"User {username} is registered"
+    return user
 
 @app.put("/user/{user_id}/{username}/{age}")
-async def update_message(user_id: valid_id, username: valid_username, age: valid_age) -> str:
-    try:
-        for user in users:
-            if user.id == user_id:
-                user.username = username
-                user.age = age
+async def update_user(user_id: valid_id, username: valid_username, age: valid_age) -> str:
+    for user in users:
+        if user.id == user_id:
+            user.username = username
+            user.age = age
+            return user
 
-        return f"User {user_id} was edited"
-    except:
-        raise HTTPException(status_code=404, detail="Message not found")
+    raise HTTPException(status_code=404, detail="User was not found" )
 
 @app.delete('/user/{user_id}')
-async def del_message(user_id: valid_id) -> str:
-        for __id, user in enumerate(users):
-            if user.id == user_id:
-                users.pop(__id)
-                return f"User {user_id} was deleted"
-        raise HTTPException(status_code=404, detail="User was not found")
+async def del_user(user_id: valid_id) -> str:
+    for __id, user in enumerate(users):
+        if user.id == user_id:
+            users.pop(__id)
+            return user
+    raise HTTPException(status_code=404, detail="User was not found")
 
 
 
